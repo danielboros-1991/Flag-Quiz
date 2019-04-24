@@ -1,0 +1,33 @@
+<% include partials/header %>
+
+<body>
+	<div id="top">
+		<h1>Flag Search</h1>
+		<span id="lyrics"></span>
+	</div>
+	
+	<div id="middle">		
+		<!-- <span id="result"></span> -->
+		<form id="searchForm" action="/search" method="POST">
+		    <input type="text" name="searchImage" placeholder="Enter Country">
+		    <button id="searchButton">Search</button>
+		</form>
+		<button id="back"><a href="/">Back</a></button>
+	</div>
+
+	<div id="bottom">
+		<div id="searchedImage"></div>
+		
+	    <p id="searchedImageText"></p>
+		
+	</div>
+	
+	
+	
+	<p id="searched" style="display:none"><%= searched %></p>
+
+	
+<script type="text/javascript" src="Flag_Search.js"></script>
+
+<% include partials/footer %>
+

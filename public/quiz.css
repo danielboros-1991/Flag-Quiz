@@ -1,0 +1,150 @@
+body {
+	margin: 0;
+	
+}
+
+#top {
+	background: #FFA500;
+	text-align: center;
+	
+	padding: 20px;
+
+
+}
+
+#middle {
+	background: black;
+	text-align: center;
+	height: 30px;
+}
+
+button {
+	border: none;
+	background: none;
+	color: white;
+	font-family: 'Cinzel', serif;
+	height: 100%;
+	transition: all 0.3s;
+	outline: none;
+}
+
+#bottom {
+	/*background: red;*/
+	max-width: 750px;
+	margin: 5% auto;
+}
+
+.squares {
+	/*background: blue;*/
+	
+	background-size: 225px 150px;
+	width: 30%;
+	/* % - specifies a padding in % of the width of the containing element*/
+	/*So the div-squares are contained inside the bottom-div*/
+	padding-top: 20%;
+	margin: 1.66%;
+	float: left;
+	border-radius: 10%;
+}
+
+h1 {
+	font-family: 'Permanent Marker', cursive;
+	font-size: 50px;
+	margin-top: 0;
+	/*border: black solid;*/
+	margin-bottom: 0;
+
+}
+
+/*Ich hab das Gefühl divs haben bei default einen margin = 0 */
+
+#result {
+	color: white;
+	font-family: 'Cinzel', serif;
+	/*margin: auto 30px;*/
+	/*height: 100%;*/
+	display: inline-block;
+	width: 20%;
+}
+
+#lyrics {
+	font-family: 'Shadows Into Light', cursive;
+	font-size: 30px;
+	/*margin-bottom: 30px;*/
+	/*border: black solid;*/
+	/*padding: 10px;*/
+}
+
+button:hover{
+	color:black;
+	background: white;
+}
+
+.selected {
+	color:white;
+	background: #FFA500;
+}
+
+input{
+	width: 300px;
+	border: none;
+	padding: 2px 2px;
+	outline: none;
+
+}
+
+#searchedImage{
+		/*background: blue;*/
+	
+	background-size: 225px 150px;
+	width: 30%;
+	/* % - specifies a padding in % of the width of the containing element*/
+	/*So the div-squares are contained inside the bottom-div*/
+	padding-top: 20%;
+	margin: auto auto;
+	/*float: left;*/
+	display:inline-block;
+	border-radius: 10%;
+}
+
+#searchForm{
+	display: inline-block;
+	height:100%;
+	margin-left: 125px;
+}
+
+#searchedImageText{
+	text-align: center;
+	font-family: 'Permanent Marker', cursive;
+	font-size: 30px;
+}
+
+#lookup{
+	float: right;
+	margin-right: 20px;
+}
+
+#reset{
+	margin-left:150px;
+}
+
+button a{
+	text-decoration:none;
+	color: white;
+}
+
+button a:hover{
+	color:black;
+	background: white;
+}
+
+#back{
+	float:right;
+	margin-right: 20px;
+}
+
+.tryOut{
+	text-align: center;
+	font-family: 'Permanent Marker', cursive;
+	font-size: 30px;
+}
