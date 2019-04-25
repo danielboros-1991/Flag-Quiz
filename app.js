@@ -8,14 +8,10 @@ app.use(bodyParser.urlencoded({extended:true}));
 var fs = require('fs');
 
 var data = {};
-
-// var searched = "";
-
 var json = JSON.parse(fs.readFileSync('public/flags.json', 'utf8'));
 for(key in json){
     data[key]=json[key]
 }
-console.log(data)
 
 app.get("/", function(req,res){
     res.render("quiz")
@@ -25,12 +21,18 @@ app.get("/search", function(req,res){
     res.render("search",{data:data})
 });
 
-// app.post("/search", function(req,res){
-//     var search = req.body.searchImage;
-//     searched = search
-//     res.redirect("/search");
+app.get("/search/:id", function(req,res){
+    var id = req.params.id;
+    res.render("show",{data:data, id:id})
+});
+
+
+
+app.post("/search", function(req,res){
+    var search = req.body.searchImage;
+    res.redirect("/search/"+search);
     
-// });
+});
 
 
 
