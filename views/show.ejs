@@ -13,7 +13,7 @@
 	
 	<div id="middle">		
 		<form id="searchForm" action="/search" method="POST">
-		    <input id="searchImage" type="text" name="searchImage" placeholder="Enter Country">
+		    <input type="text" name="searchInput" placeholder="Enter Country">
 		    <button id="searchButton">Search</button>
 		</form>
 		<button id="back"><a href="/">Back</a></button>
@@ -21,15 +21,15 @@
 		
 	<div id="bottom">
 		
-		<% var s = id.replace("+ ",""); %>
-    	<% var s_adjusted = s.toLowerCase(); %>
+		<% var userSearch = id.replace("+ ",""); %>
+    	<% var userSearchAdjusted = userSearch.toLowerCase(); %>
     	<% var found = false; %>
 		<% var results ={}; %>
     	<% var counter = 0; %>
     	
     	<% for (key in data){%>
-        	 <% var key_adjusted = key.toLowerCase(); %>
-        	 <% if(key_adjusted.includes(s_adjusted) && s_adjusted!== ""){ %>
+        	 <% var keyAdjusted = key.toLowerCase(); %>
+        	 <% if(keyAdjusted.includes(userSearchAdjusted) && userSearchAdjusted!== ""){ %>
                	<% results[key] = "\'../"+ data[key].substring(1); %>
             	<% found = true; %>
             	<% counter = counter + 1; %>
@@ -45,7 +45,7 @@
              <% } %>
         <% } %>
         
-        <% if(found == false && s_adjusted!== ""){ %>
+        <% if(found == false && userSearchAdjusted!== ""){ %>
         	 <p style="text-align:center;font-family: 'Permanent Marker', cursive;font-size: 30px;">Country not found </p>
             
         <% } %>

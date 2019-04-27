@@ -1,15 +1,11 @@
 body {
 	margin: 0;
-	
 }
 
 #top {
 	background: #FFA500;
 	text-align: center;
-	
 	padding: 20px;
-
-
 }
 
 #middle {
@@ -17,6 +13,34 @@ body {
 	text-align: center;
 	height: 30px;
 }
+
+#bottom {
+	max-width: 750px;
+	margin: 5% auto;
+}
+
+/*-------------------------*/
+/*  STYLING FOR QUIZ PAGE  */
+/*-------------------------*/
+
+/*-------------------------*/
+/* Styling for top-section */
+/*-------------------------*/
+
+h1 {
+	font-family: 'Permanent Marker', cursive;
+	font-size: 50px;
+	margin: 0;
+}
+
+#countryName {
+	font-family: 'Shadows Into Light', cursive;
+	font-size: 30px;
+}
+
+/*-------------------------*/
+/* Styling for mid-section */
+/*-------------------------*/
 
 button {
 	border: none;
@@ -28,15 +52,38 @@ button {
 	outline: none;
 }
 
-#bottom {
-	/*background: red;*/
-	max-width: 750px;
-	margin: 5% auto;
+button:hover{
+	color:black;
+	background: white;
+	cursor: pointer;
 }
 
+.selected {
+	color:white;
+	background: #FFA500;
+}
+
+#reset{
+	margin-left:150px;
+}
+
+#result {
+	color: white;
+	font-family: 'Cinzel', serif;
+	display: inline-block;
+	width: 20%;
+}
+
+#lookup{
+	float: right;
+	margin-right: 20px;
+}
+
+/*-------------------------*/
+/* Styling for bottom-section */
+/*-------------------------*/
+
 .squares {
-	/*background: blue;*/
-	
 	background-size: 225px 150px;
 	width: 30%;
 	/* % - specifies a padding in % of the width of the containing element*/
@@ -45,67 +92,16 @@ button {
 	margin: 1.66%;
 	float: left;
 	border-radius: 10%;
+	cursor: pointer;
 }
 
-h1 {
-	font-family: 'Permanent Marker', cursive;
-	font-size: 50px;
-	margin-top: 0;
-	/*border: black solid;*/
-	margin-bottom: 0;
+/*-------------------------*/
+/*  STYLING FOR SEARCH PAGE  */
+/*-------------------------*/
 
-}
-
-/*Ich hab das Gefühl divs haben bei default einen margin = 0 */
-
-#result {
-	color: white;
-	font-family: 'Cinzel', serif;
-	/*margin: auto 30px;*/
-	/*height: 100%;*/
-	display: inline-block;
-	width: 20%;
-}
-
-#lyrics {
-	font-family: 'Shadows Into Light', cursive;
-	font-size: 30px;
-	/*margin-bottom: 30px;*/
-	/*border: black solid;*/
-	/*padding: 10px;*/
-}
-
-button:hover{
-	color:black;
-	background: white;
-}
-
-.selected {
-	color:white;
-	background: #FFA500;
-}
-
-input{
-	width: 300px;
-	border: none;
-	padding: 2px 2px;
-	outline: none;
-
-}
-
-#searchedImage{
-		/*background: blue;*/
-	
-	background-size: 225px 150px;
-	width: 30%;
-	/* % - specifies a padding in % of the width of the containing element*/
-	/*So the div-squares are contained inside the bottom-div*/
-	padding-top: 20%;
-	margin: auto auto;
-	/*float: left;*/
-	display:inline-block;
-	border-radius: 10%;
-}
+/*-------------------------*/
+/* Styling for mid-section */
+/*-------------------------*/
 
 #searchForm{
 	display: inline-block;
@@ -113,19 +109,11 @@ input{
 	margin-left: 125px;
 }
 
-#searchedImageText{
-	text-align: center;
-	font-family: 'Permanent Marker', cursive;
-	font-size: 30px;
-}
-
-#lookup{
-	float: right;
-	margin-right: 20px;
-}
-
-#reset{
-	margin-left:150px;
+input{
+	width: 300px;
+	border: none;
+	padding: 2px 2px;
+	outline: none;
 }
 
 button a{
@@ -143,7 +131,22 @@ button a:hover{
 	margin-right: 20px;
 }
 
-.tryOut{
+/*-------------------------*/
+/* Styling for bottom-section */
+/*-------------------------*/
+
+#searchedImage{
+	background-size: 225px 150px;
+	width: 30%;
+	/* % - specifies a padding in % of the width of the containing element*/
+	/*So the div-squares are contained inside the bottom-div*/
+	padding-top: 20%;
+	margin: auto auto;
+	display:inline-block;
+	border-radius: 10%;
+}
+
+#searchedImageText{
 	text-align: center;
 	font-family: 'Permanent Marker', cursive;
 	font-size: 30px;
