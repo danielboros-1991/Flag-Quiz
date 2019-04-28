@@ -11,7 +11,8 @@
 		<h1>Flag Search</h1>
 	</div>
 	
-	<div id="middle">		
+	<div id="middle">
+		<!-- The User's search input gets transfered from the client side to the server side -->
 		<form id="searchForm" action="/search" method="POST">
 		    <input type="text" name="searchInput" placeholder="Enter Country">
 		    <button id="searchButton">Search</button>
@@ -20,22 +21,32 @@
 	</div>
 		
 	<div id="bottom">
-		
+		<!-- The User's input is passed on from the served side through the id in the URL. To be able to -->
+		<!-- compare the input with the flags data correctly the beginning of the string has to be deleted -->
+		<!-- and the string gets transformed into all lowercase characters to ensure that the user not taking -->
+		<!-- into account upper/lowercase doesn't give an error -->
 		<% var userSearch = id.replace("+ ",""); %>
     	<% var userSearchAdjusted = userSearch.toLowerCase(); %>
     	<% var found = false; %>
 		<% var results ={}; %>
     	<% var counter = 0; %>
-    	
+    	<!-- The User's search entry is compared with the data-object, which was passed on from app.js and contains -->
+    	<!-- the information of countries and corresponding image file paths -->
     	<% for (key in data){%>
         	 <% var keyAdjusted = key.toLowerCase(); %>
+        	 <!-- If the user input is contained in the country-name and an entry in the search bar was made then the -->
+        	 <!-- the information of the found key in the data-object is written to a results-object, also the finding -->
+        	 <!-- and the number of times the entry was found is registered. -->
         	 <% if(keyAdjusted.includes(userSearchAdjusted) && userSearchAdjusted!== ""){ %>
                	<% results[key] = "\'../"+ data[key].substring(1); %>
             	<% found = true; %>
             	<% counter = counter + 1; %>
              <% } %>
         <% } %>
-		
+		<!-- The three cases: Search entry was found once, not found and found more than once in the flags data, are handled -->
+		<!-- seperately. If the search entry was found once the corresponding image of the flag and name of country appears below. -->
+	    <!-- A message appears if the search entry is not contained in the flags-data. And if there were more than one results found  -->
+	    <!-- in the flag-data then a list of those found countries appear which the user can choose from and click on to get to the wanted flag result. -->
 	    <% if(counter == 1){ %>
         	 <% for(key in results){ %>
                	<div class="squares" style="margin: 0 262.5px;background-image: url(<%=results[key]%>)"></div>
@@ -47,7 +58,6 @@
         
         <% if(found == false && userSearchAdjusted!== ""){ %>
         	 <p style="text-align:center;font-family: 'Permanent Marker', cursive;font-size: 30px;">Country not found </p>
-            
         <% } %>
       
         <% if(counter>1){ %>
