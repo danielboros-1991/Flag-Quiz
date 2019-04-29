@@ -12,7 +12,7 @@
 	</div>
 	
 	<div id="middle">
-		<!-- The User's search input gets transfered from the client side to the server side -->
+		<!-- The User's search input gets transfered from the client side to the server side. -->
 		<form id="searchForm" action="/search" method="POST">
 		    <input type="text" name="searchInput" placeholder="Enter Country">
 		    <button id="searchButton">Search</button>
@@ -24,14 +24,14 @@
 		<!-- The User's input is passed on from the served side through the id in the URL. To be able to -->
 		<!-- compare the input with the flags data correctly the beginning of the string has to be deleted -->
 		<!-- and the string gets transformed into all lowercase characters to ensure that the user not taking -->
-		<!-- into account upper/lowercase doesn't give an error -->
+		<!-- into account upper/lowercase doesn't give an error. -->
 		<% var userSearch = id.replace("+ ",""); %>
     	<% var userSearchAdjusted = userSearch.toLowerCase(); %>
     	<% var found = false; %>
 		<% var results ={}; %>
     	<% var counter = 0; %>
     	<!-- The User's search entry is compared with the data-object, which was passed on from app.js and contains -->
-    	<!-- the information of countries and corresponding image file paths -->
+    	<!-- the information of countries and corresponding image file paths. -->
     	<% for (key in data){%>
         	 <% var keyAdjusted = key.toLowerCase(); %>
         	 <!-- If the user input is contained in the country-name and an entry in the search bar was made then the -->

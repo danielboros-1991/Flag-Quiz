@@ -1,8 +1,8 @@
-// To get data from an URL the XMLHttpRequest-object is used
-// Here we use it to get the data from the flags.json file 
+// To get data from an URL the XMLHttpRequest-object is used.
+// Here we use it to get the data from the flags.json file. 
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
-  // If the data has been sent successfully the javascript code of the flags quiz is executed.
+  // If the data has been sent successfully back from the server the javascript code of the flags quiz is executed.
   if (this.readyState == 4 && this.status == 200) {
   	// To get a Javascript-Object from the strings contained in the JSON-file the JSON-file has to be parsed.
   	// After that the keys and values of the object are pushed into seperate arrays.
@@ -29,7 +29,10 @@ xmlhttp.onreadystatechange = function() {
 	
 	defaultMode();
 	
+	// Defining the three different modes and setting up the quiz accordingly.
+	
 	easyModeButton.addEventListener("click", function(){
+		// Handling of the visual appearance of the difficulty buttons to show the user which mode they are playing.
 		easyModeButton.classList.add("selected");
 		if(selectedMode == "medium"){
 			mediumModeButton.classList.remove("selected");
@@ -38,19 +41,7 @@ xmlhttp.onreadystatechange = function() {
 		}
 		selectedMode = "easy";
 		imagesDisplayed = 3;
-		randomArray = random(imageNumber,imagesDisplayed);
-		displayedFlags=[];
-		for(var i = 0; i < square.length; i++){
-			if(i < imagesDisplayed){
-				var number = randomArray[i];
-				displayedFlags.push(number);
-				square[i].style.backgroundImage = "url("+ images[number] +")";
-			} else{
-				square[i].style.display = "none";
-			}
-		} 
-		num = pickNumber(displayedFlags);
-		countryNameDisplay.textContent = countryNames[num];
+		setupQuiz();
 	});
 	
 	hardModeButton.addEventListener("click", function(){
@@ -61,67 +52,24 @@ xmlhttp.onreadystatechange = function() {
 			easyModeButton.classList.remove("selected");
 		}
 		selectedMode = "hard";
-		if(imagesDisplayed === 6){
-			mediumModeButton.classList.remove("selected");
-		} else{
-			easyModeButton.classList.remove("selected");
-		}
 		imagesDisplayed = 9;
-		randomArray = random(imageNumber,imagesDisplayed);
-		displayedFlags=[];
-		for(var i = 0; i < square.length; i++){
-			if(i < imagesDisplayed){
-				var number = randomArray[i];
-				displayedFlags.push(number);
-				square[i].style.backgroundImage = "url("+ images[number] +")";
-				square[i].style.display = "block";
-			} else{
-				square[i].style.display = "none";
-			}
-		} 
-		num = pickNumber(displayedFlags);
-		countryNameDisplay.textContent = countryNames[num];
+		setupQuiz();
 	});
 	
 	mediumModeButton.addEventListener("click", function(){
 		defaultMode()
 	});
 	
-	// We create a set with random numbers between 0 and the length of the images array, and go through a while loop until the random set has 
-	// reached the length of the images array.
-	
 	function defaultMode(){
-		
-		// Handling of the visual appearance of the difficulty buttons to show the user which mode they are playing.
 		mediumModeButton.classList.add("selected");
 		if(selectedMode == "hard"){
 			hardModeButton.classList.remove("selected");
 		} else if(selectedMode == "easy"){
 			easyModeButton.classList.remove("selected");
 		}
-		
-		// A random array is generated with 6 entries (the difficulty level being medium) by calling the random-function.
 		selectedMode = "medium";
 		imagesDisplayed = 6;
-		randomArray = random(imageNumber,imagesDisplayed);
-		displayedFlags=[];
-		
-		// According to the random array the images of the flags are displayed in 6 square elements randomly.
-		for(var i = 0; i < square.length; i++){
-			if(i < imagesDisplayed){
-				var number = randomArray[i];
-				displayedFlags.push(number);
-				square[i].style.backgroundImage = "url("+ images[number] +")";
-				square[i].style.display = "block";
-			} else{
-				square[i].style.display = "none";
-			}
-		} 
-		
-		// A random country from these displayed flags is chosen by calling a function and the countries name is displayed 
-		// for the user as a text to know which country should be guessed.
-		num = pickNumber(displayedFlags);
-		countryNameDisplay.textContent = countryNames[num];
+		setupQuiz();
 	}
 	
 	// This function generates an array with randomly chosen indices of the images array. 
@@ -164,27 +112,34 @@ xmlhttp.onreadystatechange = function() {
 		});
 	}
 	
-	// 
 	resetButton.addEventListener("click", function(){
+		setupQuiz();
+	});
+	
+	function setupQuiz(){
 		randomArray = random(imageNumber,imagesDisplayed)
 		displayedFlags=[];
+		// According to the random array the images of the flags are displayed in n = imagesDisplayed square elements randomly.
 		for(var i = 0; i < square.length; i++){		
 			if(i < imagesDisplayed){
 				var number = randomArray[i];
 				displayedFlags.push(number);
 				square[i].style.backgroundImage = "url("+ images[number] +")";
+				square[i].style.display = "block";
 				resultDisplay.textContent = "";
 			} else{
 				square[i].style.display = "none";
 			}					
 		}
+		// A random country from these displayed flags is chosen by calling a function and the countries name is displayed 
+		// for the user as a text to know which country should be guessed.
 		num = pickNumber(displayedFlags);
 		countryNameDisplay.textContent = countryNames[num];
-	});	
-	
+	}
   }
 }
 
+// The XMLHttpRequest is initialized and the request is sent to the server.
 xmlhttp.open("GET", "flags.json", true);
 xmlhttp.send();
 

@@ -1,15 +1,19 @@
-// Package requirements
+// Package requirements.
 var express    = require("express");
     bodyParser = require("body-parser");
     fs         = require('fs');
-// Setting up express-app    
+    
+// Setting up express-app.    
 var app = express();
-// Telling express-app where to find static files
+
+// Telling express-app where to find static files.
 app.use(express.static("public"));
 app.use(express.static("public/images"));
 
+// Telling express-app to use middleware to decode data coming back from POST-requests.
 app.use(bodyParser.urlencoded({extended:true}));
-// Defining the template engine ejs 
+
+// Defining the template engine ejs. 
 app.set("view engine", "ejs");
 
 // JSON file is read in and stored into an object so that it can be passed on through the 
@@ -20,7 +24,7 @@ for(key in json){
     data[key]=json[key];
 }
 
-// Rendering the landing-page which contains the flag-quiz
+// Rendering the landing-page which contains the flag-quiz.
 app.get("/", function(req,res){
     res.render("quiz")
 });
