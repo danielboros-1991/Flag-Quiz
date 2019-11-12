@@ -46,8 +46,6 @@ app.get("/search/:id", function(req,res){
     res.render("show",{data:data, id:id})
 });
 
-// app.listen(3000);
-
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log("The server has started.");
 })
