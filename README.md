@@ -2,7 +2,7 @@
 A Web Application which tests your knowledge about
 the flags of different countries in form of a game.
 Also includes a search-page to look up the flags of
-all UN-recognized countries in the world!
+all UN member states!
 # What I Learned
 * Writing the logic of the application on the client side with javascript in contrast to
   the templating language ejs on the server side and their limitations.
